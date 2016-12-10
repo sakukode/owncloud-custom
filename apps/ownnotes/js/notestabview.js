@@ -90,7 +90,7 @@
 			// var currentUser = OC.getCurrentUser();		
 			// var $inputNote = $form.find('#note');
 			// var note = $inputNote.val().trim();
-			// e.preventDefault();
+			e.preventDefault();
 				
 
 			console.log("submit form note" + note);		
