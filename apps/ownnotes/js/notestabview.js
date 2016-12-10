@@ -10,8 +10,9 @@
 
 (function() {
 	var TEMPLATE =
-		'<form class="formNote" method="post">' +
-		'<div><label>Note</label><br /><input type="text" class="form-control" id="note" /></div><br />' +
+		'<form class="formMetaData" method="post">' +
+		'<div><label>Client Name</label><br /><input type="text" class="form-control" id="clientName" /></div><br />' +
+		'<div><label>Facture</label><br /><input type="text" class="form-control" id="facture" /></div><br />' +
 		'<div><button type="submit" class="submit">Save</button></div>' +
 		'</form>';
 
@@ -28,7 +29,7 @@
 		$versionsContainer: null,
 
 		events: {
-			'submit .formNote': '_onSubmitNote',
+			'submit .formMetaData': '_onSubmitMetaData',
 		},
 
 		initialize: function() {
@@ -89,20 +90,21 @@
 			return !fileInfo.isDirectory();
 		},
 
-		_onSubmitNote: function(e) {
+		_onSubmitMetaData: function(e) {
 			var self = this;
 			var $form = $(e.target);		
 			var currentUser = OC.getCurrentUser();		
-			var $inputNote = $form.find('#note');
-			var note = $inputNote.val().trim();			
+			var $inputClientName = $form.find('#clientName');
+			var $inputFacture = $form.find('#facture');
+			var clientName = $inputClientName.val().trim();
+			var facture    = $inputFacture.val().trim();			
 
 			e.preventDefault();
-				
-			
+							
 			this.collection.insert({
 				userId: currentUser.uid,				
-				title: note,
-				content: note				
+				clientName: clientName,
+				facture: facture
 			}, {
 				at: 0,
 					// wait for real creation before adding

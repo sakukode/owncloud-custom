@@ -16,9 +16,9 @@
                 <length>8</length>
             </field>
             <field>
-                <name>title</name>
-                <type>text</type>
-                <length>200</length>
+                <name>object_id</name>
+                <type>integer</type>
+                <length>8</length>
                 <default></default>
                 <notnull>true</notnull>
             </field>
@@ -30,8 +30,14 @@
                 <notnull>true</notnull>
             </field>
             <field>
-                <name>content</name>
-                <type>clob</type>
+                <name>client_name</name>
+                <type>text</type>
+                <default></default>
+                <notnull>true</notnull>
+            </field>
+            <field>
+                <name>facture</name>
+                <type>text</type>
                 <default></default>
                 <notnull>true</notnull>
             </field>

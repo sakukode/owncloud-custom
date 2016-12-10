@@ -2,10 +2,10 @@
 <info>
     <id>ownnotes</id>
     <name>Own Notes</name>
-    <description>My first ownCloud app</description>
+    <description>Test Metadata</description>
     <licence>AGPL</licence>
-    <author>Bernhard Posselt</author>
-    <version>0.0.3</version>
+    <author>Rizqi Maulana</author>
+    <version>0.0.4</version>
     <namespace>OwnNotes</namespace>
     <category>other</category>
     <dependencies>

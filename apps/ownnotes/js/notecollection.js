@@ -43,6 +43,8 @@
 		insert: function(data) {
 			console.log(data);
 
+			data.objectId = this._objectId;
+
 			var deferred = $.Deferred();
 	        var self = this;
 	        $.ajax({
@@ -50,7 +52,7 @@
 	            method: 'POST',
 	            contentType: 'application/json',
 	            data: JSON.stringify(data)
-	        }).done(function (note) {	            
+	        }).done(function (data) {	            
 	            deferred.resolve();
 	        }).fail(function () {
 	            deferred.reject();

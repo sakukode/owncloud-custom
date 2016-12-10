@@ -7,15 +7,17 @@ use OCP\AppFramework\Db\Entity;
 
 class Note extends Entity implements JsonSerializable {
 
-    protected $title;
-    protected $content;
+    protected $object_id;
+    protected $client_name;
+    protected $facture;
     protected $userId;
 
     public function jsonSerialize() {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'content' => $this->content
+            'object_id' => $this->object_id,
+            'client_name' => $this->client_name,
+            'facture' => $this->facture
         ];
     }
 }
