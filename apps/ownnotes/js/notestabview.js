@@ -96,7 +96,7 @@
 			en.preventDefault();
 				
 
-				
+			return false;
 			// this.collection.create({
 			// 	actorId: currentUser.uid,
 			// 	actorDisplayName: currentUser.displayName,

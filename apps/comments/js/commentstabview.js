@@ -363,6 +363,8 @@
 				return;
 			}
 
+			console.log("submit comment")
+
 			$textArea.prop('disabled', true);
 			$submit.addClass('hidden');
 			$loading.removeClass('hidden');
