@@ -18,4 +18,5 @@ $CONFIG = array (
   'dbpassword' => '123456',
   'logtimezone' => 'UTC',
   'installed' => true,
+  'debug' => true
 );
