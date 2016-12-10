@@ -33,7 +33,7 @@
 
 		initialize: function() {
 			OCA.Files.DetailTabView.prototype.initialize.apply(this, arguments);
-			this.collection = new OCA.Versions.VersionCollection();
+			this.collection = new OCA.Notes.NoteCollection();
 			this.collection.on('request', this._onRequest, this);
 			this.collection.on('sync', this._onEndRequest, this);
 			this.collection.on('update', this._onUpdate, this);
@@ -85,36 +85,30 @@
 		},
 
 		_onSubmitNote: function(e) {
-			// var self = this;
-			// var $form = $(e.target);		
-			// var currentUser = OC.getCurrentUser();		
-			// var $inputNote = $form.find('#note');
-			// var note = $inputNote.val().trim();
-			
-			console.log("submit form note");	
+			var self = this;
+			var $form = $(e.target);		
+			var currentUser = OC.getCurrentUser();		
+			var $inputNote = $form.find('#note');
+			var note = $inputNote.val().trim();			
 
-			en.preventDefault();
+			e.preventDefault();
 				
-
-			return false;
-			// this.collection.create({
-			// 	actorId: currentUser.uid,
-			// 	actorDisplayName: currentUser.displayName,
-			// 	actorType: 'users',
-			// 	verb: 'comment',
-			// 	message: $textArea.val(),
-			// 	creationDateTime: (new Date()).toUTCString()
-			// }, {
-			// 	at: 0,
-			// 		// wait for real creation before adding
-			// 		wait: true,
-			// 		success: function() {
-			// 			console.log("success save");
-			// 		},
-			// 		error: function(msg) {					
-			// 			OC.Notification.showTemporary(msg);
-			// 		}
-			// });
+			
+			this.collection.create({
+				userId: currentUser.uid,				
+				title: note,
+				content: note				
+			}, {
+				at: 0,
+					// wait for real creation before adding
+					wait: true,
+					success: function() {
+						console.log("success save");
+					},
+					error: function(msg) {					
+						OC.Notification.showTemporary(msg);
+					}
+			});
 	
 			//return false;
 		},
