@@ -43,6 +43,6 @@
 		}
 	});
 
-	OCA.Comments.NoteModel = NoteModel;
+	OCA.Notes.NoteModel = NoteModel;
 })(OC, OCA);
 
