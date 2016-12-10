@@ -34,6 +34,10 @@ $eventDispatcher = \OC::$server->getEventDispatcher();
 $eventDispatcher->addListener(
 	'OCA\Files::loadAdditionalScripts',
 	function() {		
+		\OCP\Util::addScript('ownnotes', 'notemodel');
+		\OCP\Util::addScript('ownnotes', 'notecollection');
+		\OCP\Util::addScript('ownnotes', 'notesummarymodel');
+		\OCP\Util::addScript('ownnotes', 'notestabview');
 		\OCP\Util::addScript('ownnotes', 'notestabview');
 		\OCP\Util::addScript('ownnotes', 'filesplugin');	
 		\OCP\Util::addStyle('ownnotes', 'style');	
