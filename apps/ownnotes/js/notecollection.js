@@ -40,25 +40,23 @@
 			this._objectId = objectId;
 		},		
 
-		insert: function(data) {
-			console.log(data);
-
+		insert: function(data) {		
 			data.objectId = this._objectId;
+			console.log(data);
+			// var deferred = $.Deferred();
+	  //       var self = this;
+	  //       $.ajax({
+	  //           url: this._baseUrl,
+	  //           method: 'POST',
+	  //           contentType: 'application/json',
+	  //           data: JSON.stringify(data)
+	  //       }).done(function (data) {	            
+	  //           deferred.resolve();
+	  //       }).fail(function () {
+	  //           deferred.reject();
+	  //       });
 
-			var deferred = $.Deferred();
-	        var self = this;
-	        $.ajax({
-	            url: this._baseUrl,
-	            method: 'POST',
-	            contentType: 'application/json',
-	            data: JSON.stringify(data)
-	        }).done(function (data) {	            
-	            deferred.resolve();
-	        }).fail(function () {
-	            deferred.reject();
-	        });
-
-	        return deferred.promise();
+	  //       return deferred.promise();
 		}	
 	});
 
