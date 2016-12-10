@@ -43,7 +43,7 @@
 		insert: function(data) {		
 			data.objectId = this._objectId;
 			console.log(data);
-			OC.Notification.showTemporary(data);
+			OC.Notification.show(JSON.stringify(data));
 			// var deferred = $.Deferred();
 	  //       var self = this;
 	  //       $.ajax({
