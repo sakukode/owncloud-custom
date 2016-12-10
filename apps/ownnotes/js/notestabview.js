@@ -33,12 +33,13 @@
 
 		initialize: function() {
 			OCA.Files.DetailTabView.prototype.initialize.apply(this, arguments);
-			this.collection = new OCA.Notes.NoteCollection();
-			this.collection.on('request', this._onRequest, this);
-			this.collection.on('sync', this._onEndRequest, this);
-			this.collection.on('update', this._onUpdate, this);
-			this.collection.on('error', this._onError, this);
-			this.collection.on('add', this._onAddModel, this);
+			// this.collection = new OCA.Notes.NoteCollection();
+			// this.collection.on('request', this._onRequest, this);
+			// this.collection.on('sync', this._onEndRequest, this);
+			// this.collection.on('update', this._onUpdate, this);
+			// this.collection.on('error', this._onError, this);
+			// this.collection.on('add', this._onAddModel, this);
+			this.noteAction = new Notes();
 		},
 
 		getLabel: function() {
@@ -51,12 +52,10 @@
 		},
 
 		setFileInfo: function(fileInfo) {
-			if (fileInfo) {
-				this.model = fileInfo;
+			if (fileInfo) {		
 				this.render();
 				this.collection.setObjectId(fileInfo.id);				
-			} else {
-				this.model = null;
+			} else {				
 				this.render();
 				this.collection.reset();
 			}		
@@ -101,21 +100,22 @@
 			e.preventDefault();
 				
 			
-			this.collection.create({
-				userId: currentUser.uid,				
-				title: note,
-				content: note				
-			}, {
-				at: 0,
-					// wait for real creation before adding
-					wait: true,
-					success: function() {
-						console.log("success save");
-					},
-					error: function(msg) {					
-						OC.Notification.showTemporary(msg);
-					}
-			});
+			this.noteAction.create(note);
+			// this.collection.create({
+			// 	userId: currentUser.uid,				
+			// 	title: note,
+			// 	content: note				
+			// }, {
+			// 	at: 0,
+			// 		// wait for real creation before adding
+			// 		wait: true,
+			// 		success: function() {
+			// 			console.log("success save");
+			// 		},
+			// 		error: function(msg) {					
+			// 			OC.Notification.showTemporary(msg);
+			// 		}
+			// });
 	
 			//return false;
 		},

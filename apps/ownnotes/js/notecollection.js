@@ -20,10 +20,7 @@
 	var NoteCollection = OC.Backbone.Collection.extend(
 		/** @lends OCA.Notes.NoteCollection.prototype */ {
 
-		sync: OC.Backbone.davSync,
-
-		model: OCA.Notes.NoteModel,
-
+		sync: OC.Backbone.davSync,		
 		/**
 		 * Object type
 		 *
@@ -36,60 +33,14 @@
 		 *
 		 * @type string
 		 */
-		_objectId: null,	
-		/**
-		 * Initializes the collection
-		 *
-		 * @param {string} [options.objectType] object type
-		 * @param {string} [options.objectId] object id
-		 */
-		initialize: function(models, options) {
-			options = options || {};
-			if (options.objectType) {
-				this._objectType = options.objectType;
-			}
-			if (options.objectId) {
-				this._objectId = options.objectId;
-			}
-		},
-
-		url: function() {
-			return OC.linkToRemote('dav') + '/notes/' +
-				encodeURIComponent(this._objectType) + '/' +
-				encodeURIComponent(this._objectId) + '/';
-		},
-
+		_objectId: null,		
 		setObjectId: function(objectId) {
 			this._objectId = objectId;
 		},		
-		/**
-		 * Returns the matching summary model
-		 *
-		 * @return {OCA.Notes.NoteSummaryModel} summary model
-		 */
-		getSummaryModel: function() {
-			if (!this._summaryModel) {
-				this._summaryModel = new OCA.Notes.NoteSummaryModel({
-					id: this._objectId,
-					objectType: this._objectType
-				});
-			}
-			return this._summaryModel;
-		},
 
-		/**
-		 * Updates the read marker for this comment thread
-		 *
-		 * @param {Date} [date] optional date, defaults to now
-		 * @param {Object} [options] backbone options
-		 */
-		updateReadMarker: function(date, options) {
-			options = options || {};
-
-			return this.getSummaryModel().save({
-				readMarker: (date || new Date()).toUTCString()
-			}, options);
-		}
+		insert: function() {
+			
+		}	
 	});
 
 	OCA.Notes.NoteCollection = NoteCollection;
