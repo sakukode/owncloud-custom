@@ -21,6 +21,8 @@
 		/** @lends OCA.Notes.NoteCollection.prototype */ {
 
 		sync: OC.Backbone.davSync,		
+		
+		_baseUrl: OC.generateUrl('/apps/ownnotes/notes'),
 		/**
 		 * Object type
 		 *
@@ -38,8 +40,23 @@
 			this._objectId = objectId;
 		},		
 
-		insert: function() {
-			
+		insert: function(data) {
+			console.log(data);
+
+			var deferred = $.Deferred();
+	        var self = this;
+	        $.ajax({
+	            url: this._baseUrl,
+	            method: 'POST',
+	            contentType: 'application/json',
+	            data: data
+	        }).done(function (note) {	            
+	            deferred.resolve();
+	        }).fail(function () {
+	            deferred.reject();
+	        });
+
+	        return deferred.promise();
 		}	
 	});
 

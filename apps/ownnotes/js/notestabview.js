@@ -100,22 +100,21 @@
 			e.preventDefault();
 				
 			
-			this.noteAction.create(note);
-			// this.collection.create({
-			// 	userId: currentUser.uid,				
-			// 	title: note,
-			// 	content: note				
-			// }, {
-			// 	at: 0,
-			// 		// wait for real creation before adding
-			// 		wait: true,
-			// 		success: function() {
-			// 			console.log("success save");
-			// 		},
-			// 		error: function(msg) {					
-			// 			OC.Notification.showTemporary(msg);
-			// 		}
-			// });
+			this.collection.insert({
+				userId: currentUser.uid,				
+				title: note,
+				content: note				
+			}, {
+				at: 0,
+					// wait for real creation before adding
+					wait: true,
+					success: function() {
+						console.log("success save");
+					},
+					error: function(msg) {					
+						OC.Notification.showTemporary(msg);
+					}
+			});
 	
 			//return false;
 		},
