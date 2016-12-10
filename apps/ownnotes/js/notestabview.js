@@ -33,13 +33,12 @@
 
 		initialize: function() {
 			OCA.Files.DetailTabView.prototype.initialize.apply(this, arguments);
-			// this.collection = new OCA.Notes.NoteCollection();
+			this.collection = new OCA.Notes.NoteCollection();
 			// this.collection.on('request', this._onRequest, this);
 			// this.collection.on('sync', this._onEndRequest, this);
 			// this.collection.on('update', this._onUpdate, this);
 			// this.collection.on('error', this._onError, this);
-			// this.collection.on('add', this._onAddModel, this);
-			this.noteAction = new Notes();
+			// this.collection.on('add', this._onAddModel, this);			
 		},
 
 		getLabel: function() {
