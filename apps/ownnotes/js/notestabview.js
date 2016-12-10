@@ -10,7 +10,10 @@
 
 (function() {
 	var TEMPLATE =
-		'<div><label>Note</label><br /><input type="text" class="form-control" name="note" /></div>';
+		'<form id="form-note" method="post">' +
+		'<div><label>Note</label><br /><input type="text" class="form-control" id="note" /></div><br />' +
+		'<div><button type="submit" class="submit">Save</button></div>' +
+		'</form>';
 
 	/**
 	 * @memberof OCA.Versions
@@ -25,7 +28,7 @@
 		$versionsContainer: null,
 
 		events: {
-			
+			'submit #form-note': '_onSubmit',
 		},
 
 		initialize: function() {
@@ -79,7 +82,39 @@
 				return false;
 			}
 			return !fileInfo.isDirectory();
-		}
+		},
+
+		_onSubmit: function(e) {
+			var self = this;
+			var $form = $(e.target);		
+			var currentUser = OC.getCurrentUser();		
+			var $inputNote = $form.find('#note');
+			var note = $inputNote.val().trim();
+			e.preventDefault();
+				
+
+			console.log(note);		
+			// this.collection.create({
+			// 	actorId: currentUser.uid,
+			// 	actorDisplayName: currentUser.displayName,
+			// 	actorType: 'users',
+			// 	verb: 'comment',
+			// 	message: $textArea.val(),
+			// 	creationDateTime: (new Date()).toUTCString()
+			// }, {
+			// 	at: 0,
+			// 		// wait for real creation before adding
+			// 		wait: true,
+			// 		success: function() {
+			// 			console.log("success save");
+			// 		},
+			// 		error: function(msg) {					
+			// 			OC.Notification.showTemporary(msg);
+			// 		}
+			// });
+	
+			return false;
+		},
 	});
 
 	OCA.Notes = OCA.Notes || {};
