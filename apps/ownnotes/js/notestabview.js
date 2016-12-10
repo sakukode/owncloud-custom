@@ -90,10 +90,13 @@
 			// var currentUser = OC.getCurrentUser();		
 			// var $inputNote = $form.find('#note');
 			// var note = $inputNote.val().trim();
+			
+			console.log("submit form note");	
+
 			e.preventDefault();
 				
 
-			console.log("submit form note" + note);		
+				
 			// this.collection.create({
 			// 	actorId: currentUser.uid,
 			// 	actorDisplayName: currentUser.displayName,
