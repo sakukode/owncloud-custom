@@ -49,7 +49,7 @@
 	            url: this._baseUrl,
 	            method: 'POST',
 	            contentType: 'application/json',
-	            data: data
+	            data: JSON.stringify(data)
 	        }).done(function (note) {	            
 	            deferred.resolve();
 	        }).fail(function () {
