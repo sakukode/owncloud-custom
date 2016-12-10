@@ -93,7 +93,7 @@
 			e.preventDefault();
 				
 
-			console.log(note);		
+			console.log("submit form note" + note);		
 			// this.collection.create({
 			// 	actorId: currentUser.uid,
 			// 	actorDisplayName: currentUser.displayName,
