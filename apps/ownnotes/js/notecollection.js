@@ -22,7 +22,7 @@
 
 		sync: OC.Backbone.davSync,
 
-		model: OCA.Notes.CommentModel,
+		model: OCA.Notes.NoteModel,
 
 		/**
 		 * Object type
