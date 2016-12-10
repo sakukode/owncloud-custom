@@ -36,22 +36,7 @@
 		 *
 		 * @type string
 		 */
-		_objectId: null,
-
-		/**
-		 * True if there are no more page results left to fetch
-		 *
-		 * @type bool
-		 */
-		_endReached: false,
-
-		/**
-		 * Number of notes to fetch per page
-		 *
-		 * @type int
-		 */
-		_limit : 20,
-
+		_objectId: null,	
 		/**
 		 * Initializes the collection
 		 *
@@ -76,62 +61,7 @@
 
 		setObjectId: function(objectId) {
 			this._objectId = objectId;
-		},
-
-		hasMoreResults: function() {
-			return !this._endReached;
-		},
-
-		reset: function() {
-			this._endReached = false;
-			this._summaryModel = null;
-			return OC.Backbone.Collection.prototype.reset.apply(this, arguments);
-		},
-
-		/**
-		 * Fetch the next set of results
-		 */
-		fetchNext: function(options) {
-			var self = this;
-			if (!this.hasMoreResults()) {
-				return null;
-			}
-
-			var body = '<?xml version="1.0" encoding="utf-8" ?>\n' +
-				'<oc:filter-notes xmlns:D="DAV:" xmlns:oc="http://owncloud.org/ns">\n' +
-				// load one more so we know there is more
-				'    <oc:limit>' + (this._limit + 1) + '</oc:limit>\n' +
-				'    <oc:offset>' + this.length + '</oc:offset>\n' +
-				'</oc:filter-notes>\n';
-
-			options = options || {};
-			var success = options.success;
-			options = _.extend({
-				remove: false,
-				parse: true,
-				data: body,
-				davProperties: NoteCollection.prototype.model.prototype.davProperties,
-				success: function(resp) {
-					if (resp.length <= self._limit) {
-						// no new entries, end reached
-						self._endReached = true;
-					} else {
-						// remove last entry, for next page load
-						resp = _.initial(resp);
-					}
-					if (!self.set(resp, options)) {
-						return false;
-					}
-					if (success) {
-						success.apply(null, arguments);
-					}
-					self.trigger('sync', 'REPORT', self, options);
-				}
-			}, options);
-
-			return this.sync('REPORT', this, options);
-		},
-
+		},		
 		/**
 		 * Returns the matching summary model
 		 *

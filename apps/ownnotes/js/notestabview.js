@@ -51,8 +51,15 @@
 		},
 
 		setFileInfo: function(fileInfo) {
-			console.log(fileInfo)
-			this.render();
+			if (fileInfo) {
+				this.model = fileInfo;
+				this.render();
+				this.collection.setObjectId(fileInfo.id);				
+			} else {
+				this.model = null;
+				this.render();
+				this.collection.reset();
+			}		
 		},
 		
 		template: function(data) {
