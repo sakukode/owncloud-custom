@@ -45,6 +45,9 @@ class NoteService {
     }
 
     public function create($objectId, $clientName, $facture , $userId) {
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        
         $note = new Note();
         $note->setObjectId($objectId);
         $note->setClientName($clientName);
