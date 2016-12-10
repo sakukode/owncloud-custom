@@ -10,7 +10,7 @@
 
 (function() {
 	var TEMPLATE =
-		'<form id="form-note" method="post">' +
+		'<form class="formNote" method="post">' +
 		'<div><label>Note</label><br /><input type="text" class="form-control" id="note" /></div><br />' +
 		'<div><button type="submit" class="submit">Save</button></div>' +
 		'</form>';
@@ -28,7 +28,7 @@
 		$versionsContainer: null,
 
 		events: {
-			'submit #form-note': '_onSubmit',
+			'submit .formNote': '_onSubmitNote',
 		},
 
 		initialize: function() {
@@ -84,13 +84,13 @@
 			return !fileInfo.isDirectory();
 		},
 
-		_onSubmit: function(e) {
-			var self = this;
-			var $form = $(e.target);		
-			var currentUser = OC.getCurrentUser();		
-			var $inputNote = $form.find('#note');
-			var note = $inputNote.val().trim();
-			e.preventDefault();
+		_onSubmitNote: function(e) {
+			// var self = this;
+			// var $form = $(e.target);		
+			// var currentUser = OC.getCurrentUser();		
+			// var $inputNote = $form.find('#note');
+			// var note = $inputNote.val().trim();
+			// e.preventDefault();
 				
 
 			console.log("submit form note" + note);		
@@ -113,7 +113,7 @@
 			// 		}
 			// });
 	
-			return false;
+			//return false;
 		},
 	});
 
