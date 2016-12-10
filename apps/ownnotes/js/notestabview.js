@@ -93,7 +93,7 @@
 			
 			console.log("submit form note");	
 
-			e.preventDefault();
+			en.preventDefault();
 				
 
 				
